@@ -25,7 +25,8 @@ namespace ReverbOmnicept
 
                 while (webSocket.State == WebSocketState.Open)
                 {
-                    int heartRate = GetHeartRateFromOmnicept();
+                    HeartRate hr = GetHeartRateFromOmnicept();
+                    int heartRate = Convert.ToInt32(hr.Rate);
                     string heartRateString = heartRate.ToString();
 
                     var buffer = Encoding.UTF8.GetBytes(heartRateString);
@@ -60,21 +61,21 @@ namespace ReverbOmnicept
             }
         }
 
-        private static int GetHeartRateFromOmnicept(HeartRate hr)
+        public static HeartRate GetHeartRateFromOmnicept()
         {
             int heartRate = 0;
+            HeartRate hr = null;
             try
             {
-
                 heartRate = Convert.ToInt32(hr.Rate.ToString() + " BPM");
+
             }
             catch (Exception ex)
             {
-                // Log the error message
                 Console.WriteLine("Error retrieving heart rate data: " + ex.Message);
             }
 
-            return heartRate;
+            return hr;
         }
     }
 }
