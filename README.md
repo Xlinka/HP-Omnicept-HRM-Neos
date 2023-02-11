@@ -3,7 +3,7 @@
 This is a C# program that retrieves the current heart rate from an HP Reverb Omnicept device and outputs it to the console and to a WebSocket connection. Additionally, a log is made for analytical data use and logging purposes.
 
 ## Requirements
-- HP Reverb Omnicept device
+- HP Reverb Omnicept VR Headset
 - .NET framework 4.6.1 or later
 
 ## Usage
