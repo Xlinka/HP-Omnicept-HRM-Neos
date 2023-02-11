@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <Reference Include="lib-client-csharp">
-      <HintPath>Glia\lib-client-csharp.dll</HintPath>
+      <HintPath>..\DLL\lib-client-csharp.dll</HintPath>
     </Reference>
   </ItemGroup>
 
