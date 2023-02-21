@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿using System;
+using System.IO;
+using System.Net;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
@@ -10,9 +12,9 @@ namespace ReverbOmnicept
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            HostHeartRateData().Wait();
+            await HostHeartRateData();
         }
 
         static async Task HostHeartRateData()
@@ -82,21 +84,18 @@ namespace ReverbOmnicept
 
         public static HeartRate GetHeartRateFromOmnicept()
         {
-            int heartRate = 0;
             HeartRate hr = null;
             try
             {
-                heartRate = Convert.ToInt32(hr.Rate.ToString() + " BPM");
+                // get the heart rate from Omnicept
+                hr = new HeartRate();
             }
-
-
             catch (Exception ex)
             {
                 Console.WriteLine("Error retrieving heart rate data: " + ex.Message);
             }
 
             return hr;
-
         }
     }
 }
